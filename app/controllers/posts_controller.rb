@@ -14,8 +14,8 @@ class PostsController < ApplicationController
 
 
   def create
-    @post = Post.new(post_params)
 
+    @post = current_user.posts.create(post_params)
     if @post.save
       redirect_to @post
     else
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     if (@post.update(post_params))
       redirect_to @post
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
 
     redirect_to posts_path

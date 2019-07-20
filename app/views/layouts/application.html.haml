@@ -24,8 +24,13 @@
           %ul.nav.navbar-nav
             %li
               = link_to "Home", home_path
-          %ul.nav.navbar-nav.navbar-right.mr-auto
-            %li
-              = link_to "Create post", new_post_path
+          - if current_user
+            %ul.nav.navbar-nav.navbar-right.mr-auto
+              %li
+                = link_to "Create post", new_post_path
+          - else
+            %ul.nav.navbar-nav.navbar-right.mr-auto
+              %li
+                = link_to "Signup", "/signup"
     .container
       = yield

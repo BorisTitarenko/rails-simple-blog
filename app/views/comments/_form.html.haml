@@ -1,6 +1,6 @@
 %hr/
 %h4 Add comment
-= form_for([@post, @post.comments.build]) do |f|
+= form_for [@post, @post.comments.build] do |f|
   %p
     = f.label :username
     %br/
