@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    @comment.user = current_user
     redirect_to post_path(@post)
   end
 
@@ -14,8 +13,10 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post)
   end
 
-
-  private def comment_params
-    params.require(:comment).permit(:username, :body)
+  private
+  def comment_params
+    p = params.require(:comment).permit(:username, :body, :post_id)
+    p[:user_id] = session[:user_id]
+    return p
   end
 end

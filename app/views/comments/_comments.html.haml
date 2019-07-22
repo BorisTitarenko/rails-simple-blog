@@ -2,6 +2,6 @@
 - @post.comments.each do |comment|
   .well
     %p
-      %strong>= comment.username
+      %strong>= comment.user.first_name
       \: #{comment.body}
-      \#{link_to "[X]", [comment, comment.post], method: :delete, data: {confirm: "Are you sure?"}}
+      \#{link_to "[X]", [comment.post, comment], method: :delete, data: {confirm: "Are you sure?"}}

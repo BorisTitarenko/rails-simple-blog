@@ -1,0 +1,7 @@
+= form_for :session, url: '/login' do |f|
+  %p
+    = f.email_field(:email, {:class => 'form-control'})
+  %p
+    = f.password_field(:password, {:class => 'form-control'})
+  %p
+    = f.submit(:class => 'btn btn-primary')
