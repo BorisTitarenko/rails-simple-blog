@@ -1,12 +1,16 @@
 %h1 Signup
 = form_for @user, url: '/signup' do |f|
-  %p
+  .field
+    = f.label :first_name
     = f.text_field(:first_name, {:class => 'form-control'})
-  %p
+  .field
+    = f.label :last_name
     = f.text_field(:last_name, {:class => 'form-control'})
-  %p
+  .field
+    = f.label :email
     = f.text_field(:email, {:class => 'form-control'})
-  %p
-    = f.text_field(:password_digest, {:class => 'form-control'})
+  .field
+    = f.label :password
+    = f.password_field(:password_digest, {:class => 'form-control'})
   %p
     = f.submit(:class => 'btn btn-primary')
